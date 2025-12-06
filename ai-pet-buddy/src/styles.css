@@ -1,0 +1,195 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+/* Add these styles for better game visuals */
+
+/* Game area dimensions */
+.mini-game-area {
+  position: relative;
+  width: 100%;
+  height: 256px;
+}
+
+/* Falling treats animation */
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(240px) rotate(360deg);
+    opacity: 1;
+  }
+}
+
+.falling-treat {
+  animation: fall 3s linear forwards;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.falling-treat:hover {
+  transform: scale(1.3);
+  transition: transform 0.1s ease;
+}
+
+/* Score animation */
+@keyframes scorePop {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.score-pop {
+  animation: scorePop 0.3s ease-out;
+}
+
+/* Game over animation */
+@keyframes gameOverFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.game-over-screen {
+  animation: gameOverFadeIn 0.5s ease-out;
+}
+
+/* Pet animation when catching treats */
+@keyframes petHappy {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.pet-happy {
+  animation: petHappy 0.3s ease;
+}
+
+/* Add these to src/styles.css */
+
+/* Game animations */
+@keyframes petHappy {
+  0% { transform: translate(-50%, 0) scale(1); }
+  50% { transform: translate(-50%, -10px) scale(1.2); }
+  100% { transform: translate(-50%, 0) scale(1); }
+}
+
+.pet-happy {
+  animation: petHappy 0.3s ease;
+}
+
+/* Falling treats animation */
+.falling-treat {
+  transition: top 0.1s linear, left 0.1s linear;
+}
+
+/* Game over animation */
+@keyframes gameOverFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.game-over-screen {
+  animation: gameOverFadeIn 0.5s ease-out;
+}
+
+/* Catcher glow effect */
+.catcher {
+  box-shadow: 0 0 15px rgba(6, 182, 212, 0.5);
+}
+
+.dark .catcher {
+  box-shadow: 0 0 20px rgba(34, 211, 238, 0.7);
+}
+
+/* Score pop animation */
+@keyframes scorePop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+
+.score-pop {
+  animation: scorePop 0.2s ease-out;
+}
+
+/* Prevent text selection in game */
+.game-area {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* Smooth transitions for game elements */
+.falling-treat, .catcher, .pet-avatar {
+  transition: all 0.15s ease;
+}
+
+/* Mobile touch optimizations */
+@media (max-width: 640px) {
+  .game-area {
+    touch-action: pan-y;
+  }
+  
+  .catcher {
+    width: 100px;
+    height: 12px;
+  }
+}
+/* Add smooth animations */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-bounce {
+  animation: bounce 1s infinite;
+}
+
+/* Canvas styling */
+canvas {
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* Button transitions */
+button {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Prevent text selection */
+.game-area {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
